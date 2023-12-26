@@ -1,0 +1,15 @@
+#! env/bin/python3
+
+import sys
+from indexer import Index
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: sem-grep <path> <query>")
+        sys.exit(1)
+
+    index = Index(sys.argv[1])
+
+    results = index.search(query, n=1)
+    print(results)
+    print()
