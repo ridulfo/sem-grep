@@ -1,7 +1,5 @@
 # Semantic grep
 
-## Goal
-
 - Local semantic search
 - Local "database"
 - Low code complexity
@@ -9,17 +7,37 @@
 
 Because of the sentive nature of personal files, the number of lines of code will be kept low in order for the project to easily be audited and understood.
 
+## Usage
+
+```
+sem-grep -h
+usage: Semantic grep [-h] [--update] [--path PATH] query
+
+A semantic document search
+
+positional arguments:
+  query                 The search query.
+
+options:
+  -h, --help            show this help message and exit
+  --update, -u          Whether to update the index (might take some time).
+  --path PATH, -p PATH  The directory to search.
+```
+
+**Example**
+
+`sem-grep -u -p document-directory "search query"`
+
 ## How it works
 
 ### First time
-1. 
-2. Create an empty index by recursively finding all files and hashing their content. The hash-digest will be used as key in the index.
-3. For every file, segment and embed the documents
-4. Save a cache of the index in the search directory for future searches
-5. Run vector similarity search on the embeddings
-6. Display the matches
+1. Create an empty index by recursively finding all files and hashing their content. The hash-digest will be used as key in the index.
+2. For every file, segment and embed the documents
+3. Save a cache of the index in the search directory for future searches
+4. Run vector similarity search on the embeddings
+5. Display the matches
 
-### Other times (where a cache is already present in the search directory)
+### Other times (when a cache is already present in the search directory)
 
 1. Look for a cached index
 2. If the update flag is raised
@@ -29,7 +47,3 @@ Because of the sentive nature of personal files, the number of lines of code wil
 3. Save a cache of the index in the search directory for future searches
 4. Run vector similarity search on the embeddings
 5. Display the matches
-
-## Example
-
-`sem-grep -u -p document-directory "search query"`

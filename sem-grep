@@ -164,10 +164,10 @@ def search(index:index_t, query, n=1):
         print(chapters[distance[1]])
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(prog="Semantic grep", description="A local semantic document search program")
-    parser.add_argument("query", type=str, help="The search query")
-    parser.add_argument("--update", "-u", action='store_true', help="Whether to update the index (might take some time)", default=False)
-    parser.add_argument("--path", "-p", help="The directory to search in", default=".", type=str)
+    parser = argparse.ArgumentParser(prog="Semantic grep", description="A semantic document search")
+    parser.add_argument("query", type=str, help="The search query.")
+    parser.add_argument("--update", "-u", action='store_true', help="Whether to update the index (might take some time).", default=False)
+    parser.add_argument("--path", "-p", help="The directory to search.", default=".", type=str)
     
     args = parser.parse_args()
     query = args.query
