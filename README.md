@@ -7,10 +7,14 @@
 
 Because of the sentive nature of personal files, the number of lines of code will be kept low in order for the project to easily be audited and understood.
 
+## Installation and updating
+`pip install -U git+https://github.com/ridulfo/sem-grep`
+
+
 ## Usage
 
 ```
-sem-grep -h
+semgrep -h
 usage: Semantic grep [-h] [--update] [--path PATH] query
 
 A semantic document search
@@ -26,7 +30,7 @@ options:
 
 **Example**
 
-`sem-grep -u -p document-directory "search query"`
+`semgrep -u -p document-directory "search query"`
 
 ## How it works
 

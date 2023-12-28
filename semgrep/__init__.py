@@ -13,7 +13,7 @@ from sentence_transformers import SentenceTransformer
 from torch.functional import Tensor
 from tqdm import tqdm
 
-INDEX_FILE_NAME = ".sem-grep-index"
+INDEX_FILE_NAME = ".semgrep-index"
 
 @dataclass
 class Document:
@@ -163,7 +163,7 @@ def search(index:index_t, query, n=1):
         chapters = split_text_into_chapters(document)
         print(chapters[distance[1]])
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(prog="Semantic grep", description="A semantic document search")
     parser.add_argument("query", type=str, help="The search query.")
     parser.add_argument("--update", "-u", action='store_true', help="Whether to update the index (might take some time).", default=False)
