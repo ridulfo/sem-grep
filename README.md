@@ -15,7 +15,7 @@ Because of the sentive nature of personal files, the number of lines of code wil
 
 ```
 semgrep -h
-usage: Semantic grep [-h] [--update] [--path PATH] query
+usage: Semantic grep [-h] [--update] [--path PATH] [-n N] query
 
 A semantic document search
 
@@ -26,11 +26,12 @@ options:
   -h, --help            show this help message and exit
   --update, -u          Whether to update the index (might take some time).
   --path PATH, -p PATH  The directory to search.
+  -n N                  The number of results to return
 ```
 
 **Example**
 
-`semgrep -u -p document-directory "search query"`
+`semgrep -u -p document-directory -n 4 "search query"`
 
 ## How it works
 

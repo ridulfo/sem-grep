@@ -157,22 +157,24 @@ def search(index:index_t, query, n=1):
 
     # Print the top n results
     for filename, distance in sorted_distances[:n]:
-        print(f"Best match: {filename} with score {distance[0]} in chapter {distance[1]}")
+        print(f"{filename} with score {distance[0]} in chapter {distance[1]}")
         with open(filename, "r") as f:
             document = f.read()
         chapters = split_text_into_chapters(document)
-        print(chapters[distance[1]])
+        print(chapters[distance[1]], end="\n\n")
 
 def main():
     parser = argparse.ArgumentParser(prog="Semantic grep", description="A semantic document search")
     parser.add_argument("query", type=str, help="The search query.")
     parser.add_argument("--update", "-u", action='store_true', help="Whether to update the index (might take some time).", default=False)
     parser.add_argument("--path", "-p", help="The directory to search.", default=".", type=str)
+    parser.add_argument("-n", help="The number of results to return", default=1, type=int)
     
     args = parser.parse_args()
     query = args.query
     search_path = args.path
     should_update = args.update
+    n = args.n
 
     index_path = os.path.join(search_path, INDEX_FILE_NAME)
     has_index = os.path.exists(index_path)
@@ -192,5 +194,7 @@ def main():
         embed_missing_documents(index, model)
         save_index(index_path, index)
         
-    results = search(index, query)
-    print(results)
+    search(index, query, n)
+
+if __name__ == "__main__":
+    main()
